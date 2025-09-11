@@ -24,12 +24,7 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-          git clone https://github.com/pxlxingliang/abacus-test.git
-          cd abacus-test && git checkout develop
-          pip install .
-    - name: Install abacus-agent
+    - name: Install deeptb-agent
       run: |
           pip install .
     - name: Run unittest tests

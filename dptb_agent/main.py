@@ -4,19 +4,19 @@ import os
 import argparse
 
 from importlib.metadata import version
-__version__ = version("abacusagent")
+__version__ = version("dptb_agent")
 
 def load_tools():
     """
-    Load all tools from the abacusagent package.
+    Load all tools from the dptb_agent package.
     """
     module_dir = Path(__file__).parent / "modules"
     
     for py_file in module_dir.glob("*.py"):
         if py_file.name.startswith("_") or py_file.stem in ["utils", "comm"]: 
-            continue  # skipt __init__.py and utils.py
+            continue  # skip __init__.py and utils.py
         
-        module_name = f"abacusagent.modules.{py_file.stem}"
+        module_name = f"dptb_agent.modules.{py_file.stem}"
         try:
             module = importlib.import_module(module_name)
             print(f"✅ Successfully loaded: {module_name}")
@@ -28,7 +28,7 @@ def parse_args():
     """
     Parse command line arguments.
     """
-    parser = argparse.ArgumentParser(description="AbacusAgent Command Line Interface")
+    parser = argparse.ArgumentParser(description="Dptb Agent Command Line Interface")
     
     parser.add_argument(
         "--transport",
@@ -65,19 +65,19 @@ def print_address():
     """
     Print the address of the MCP server based on environment variables.
     """
-    address = f"{os.environ['ABACUSAGENT_HOST']}:{os.environ['ABACUSAGENT_PORT']}"
-    if os.environ["ABACUSAGENT_TRANSPORT"] == "sse":
+    address = f"{os.environ['DPTB_AGENT_HOST']}:{os.environ['DPTB_AGENT_PORT']}"
+    if os.environ["DPTB_AGENT_TRANSPORT"] == "sse":
         print("Address:", address + "/sse")
-    elif os.environ["ABACUSAGENT_TRANSPORT"] == "streamable-http":
+    elif os.environ["DPTB_AGENT_TRANSPORT"] == "streamable-http":
         print("Address:", address + "/mcp")
     else:
         raise ValueError("Invalid transport protocol specified. Use 'sse' or 'streamable-http'.")
 
 def print_version():
     """
-    Print the version of the AbacusAgent.
+    Print the version of the Dptb_Agent.
     """
-    print(f"\nAbacusAgentTools Version: {__version__}")
+    print(f"\nDptb_Agent Tools Version: {__version__}")
     print("For more information, visit: https://github.com/deepmodeling/ABACUS-agent-tools\n")
 
 def main():
@@ -87,7 +87,7 @@ def main():
     print_version()
     args = parse_args()  
     
-    from abacusagent.env import set_envs, create_workpath
+    from dptb_agent.env import set_envs, create_workpath
     set_envs(
         transport_input=args.transport,
         model_input=args.model,
@@ -95,11 +95,11 @@ def main():
         host_input=args.host)
     create_workpath()
 
-    from abacusagent.init_mcp import mcp
+    from dptb_agent.init_mcp import mcp
     load_tools()  
 
     print_address()
-    mcp.run(transport=os.environ["ABACUSAGENT_TRANSPORT"])
+    mcp.run(transport=os.environ["DPTB_AGENT_TRANSPORT"])
 
 if __name__ == "__main__":
     main()

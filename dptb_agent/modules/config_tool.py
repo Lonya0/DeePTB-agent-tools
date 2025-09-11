@@ -2,7 +2,7 @@ import os
 import json
 from typing import Optional, Literal, Dict, Any, TypedDict
 from pathlib import Path
-from abacusagent.init_mcp import mcp
+from dptb_agent.init_mcp import mcp
 
 class ConfigResult(TypedDict):
     config_path: str

@@ -1,26 +1,24 @@
-# ABACUS Agent Tools
+# DeePTB Agent Tools
 
-ABACUS-agent-tools is a Python package that provides the Model Context Protocol (MCP) tools to connect large language models (LLMs) to ABACUS computational jobs. It serves as a bridge between AI models and first principles calculations, enabling intelligent interaction with ABACUS workflows.
+DeePTB-agent-tools is a Python package that provides the Model Context Protocol (MCP) tools to connect large language models (LLMs) to ABACUS computational jobs. It serves as a bridge between AI models and first principles calculations, enabling intelligent interaction with DeePTB workflows.
+
+This agent's template is borrowed from ABACUS-agent-tools: https://github.com/pxlxingliang/ABACUS-agent-tools
 
 ## Installation
-To use ABACUS agent tools with Google Agent Development Kit (ADK), follow the recommended installation process:
+To use DeePTB agent tools with Google Agent Development Kit (ADK), follow the recommended installation process:
 
 1. Create and activate a conda enviroment:
 ```bash
-conda create -n abacus-agent python=3.11
-conda activate abacus-agent
+conda create -n deeptb-agent python=3.11
+conda activate deeptb-agent
 ```
 2. Install necessary dependencies:
 ```bash
 pip install mcp google-adk litellm science-agent-sdk
 ```
-3. Install abacustest
-```bash
-git clone -b develop https://github.com/pxlxingliang/abacus-test.git
-cd abacus-test
-pip install .
-```
-4. Install ABACUS-agent-tools:
+
+
+3. Install ABACUS-agent-tools:
 ```bash
 cd ..
 git clone -b develop https://github.com/pxlxingliang/ABACUS-agent-tools.git
@@ -60,10 +58,10 @@ Note: When running `abacusagent`, it will automatically check if the file exists
     }
 }
 ```
-Then you can start `abacusagent`.
+Then you can start `dptb-agent`.
 ```bash
->>> abacusagent
-✅ Successfully loaded: abacusagent.modules.abacus
+>>> dptb-agent
+✅ Successfully loaded: dptb_agent.modules.abacus
 INFO:     Started server process [25487]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
@@ -103,8 +101,8 @@ After installing ABACUS agent tools and Google ADK on a remote server, use the e
 
 #### Example for Bohrium Nodes
 ```bash
-# Start ABACUS agent tools with public host and port
-abacusagent --host "0.0.0.0" --port 50001
+# Start DeePTB agent tools with public host and port
+dptb-agent --host "0.0.0.0" --port 50001
 # Start Google ADK with public host and port
 adk web --host "0.0.0.0" --port 50002
 ```

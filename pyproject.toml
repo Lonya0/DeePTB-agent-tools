@@ -3,31 +3,30 @@ requires = ["setuptools>=45", "setuptools_scm>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "abacusagent"
+name = "dptb_agent"
 dynamic = ["version"]
-description = "Abacus agent"
+description = "Dptb agent"
 requires-python = ">=3.11"
 
 [project.scripts]
-abacusagent = "abacusagent.main:main"
+dptb-agent = "dptb_agent.main:main"
 
 [tool.setuptools]
-package-dir = { "abacusagent" = "src/abacusagent" }
+package-dir = { "dptb_agent" = "dptb_agent" }
 
 [tool.setuptools_scm]
 
 [tool.setuptools.packages.find]
-where = ["src"]
-include = ["abacusagent*"]
+where = [""]
+include = ["dptb_agent*"]
 exclude = ["tests*", "docs*", "examples*"]
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]  
+pythonpath = [""]
 testpaths = ["tests"] 
 addopts = "-v"        
 
 [project.optional-dependencies]
 dev = ["mcp>=1.9.0",
-       "abacustest",
        "science-agent-sdk"
 ]

@@ -4,7 +4,7 @@ feasilate the workflow control of the abacus agent.
 
 Usage
 -----
-from abacusagent.util.control import FlowEnvironment
+from dptb_agent.util.control import FlowEnvironment
 
 def func(a, b):
     return a + b
