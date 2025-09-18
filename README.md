@@ -67,29 +67,6 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://localhost:50001 (Press CTRL+C to quit)
 ```
-#### Preparing Google ADK Agent
-Organize your agent files in the following structure:
-```
-name_of_your_agent/
-├── __init__.py
-└── agent.py
-```
-See example files in `examples\my_agent` to prepare `__init__.py` and `agent.py`.
-#### Starting Google ADK
-```bash
->>> adk web
-INFO:     Started server process [25799]
-INFO:     Waiting for application startup.
-
-+-----------------------------------------------------------------------------+
-| ADK Web Server started                                                      |
-|                                                                             |
-| For local testing, access at http://localhost:8000.                         |
-+-----------------------------------------------------------------------------+
-
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-```
 #### Accessing the agent
 1. Open your browser and navigate to the provided ADK address.
 2. Select the agent directory name you configured.
@@ -116,7 +93,4 @@ Visit http://your-node-address.dp.tech:50002 in your browser, where:
 Functions of ABACUS Agent tools are in active development. Currently, the following functions are exposed as 
 MCP tools and can be 
 - Prepare ABACUS input files (INPUT, STRU, KPT, pseudopotential and orbital files)
-- Modify INPUT and STRU
-- Bader charge
-- Density of states (DOS) and projected density of states (PDOS)
-- Band calculation
+

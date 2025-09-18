@@ -1,0 +1,1 @@
+adk web --port 50002 --host 0.0.0.0

@@ -39,11 +39,13 @@ venv.bak/
 htmlcov/
 .pytest_cache/
 test-results/
+dpdispatcher.log
 
 # 日志和数据库
 *.log
 *.sqlite
 *.db
+env.json
 
 
 .DS_Store
