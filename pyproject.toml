@@ -8,7 +8,7 @@ dynamic = ["version"]
 description = "Dptb agent tools for mcp"
 requires-python = ">=3.11"
 dependencies = [
-    "bohr-agent-sdk @ git+https://github.com/Lonya0/bohr-agent-sdk.git",
+    "bohr-agent-sdk",
     "mcp>=1.9.0"
 ]
 
