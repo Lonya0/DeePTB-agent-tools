@@ -4,11 +4,11 @@ import os
 import argparse
 
 from importlib.metadata import version
-__version__ = version("dptb_agent")
+__version__ = version("dptb_agent_tools")
 
 def load_tools():
     """
-    Load all tools from the dptb_agent package.
+    Load all tools from the dptb_agent_tools package.
     """
     module_dir = Path(__file__).parent / "modules"
     
@@ -16,7 +16,7 @@ def load_tools():
         if py_file.name.startswith("_") or py_file.stem in ["utils", "comm"]: 
             continue  # skip __init__.py and utils.py
         
-        module_name = f"dptb_agent.modules.{py_file.stem}"
+        module_name = f"dptb_agent_tools.modules.{py_file.stem}"
         try:
             module = importlib.import_module(module_name)
             print(f"✅ Successfully loaded: {module_name}")
@@ -77,8 +77,9 @@ def print_version():
     """
     Print the version of the Dptb_Agent.
     """
+    repo = "nowhere"
     print(f"\nDptb_Agent Tools Version: {__version__}")
-    print("For more information, visit: https://github.com/deepmodeling/ABACUS-agent-tools\n")
+    print(f"For more information, visit: {repo}\n")
 
 def main():
     """
@@ -87,7 +88,7 @@ def main():
     print_version()
     args = parse_args()  
     
-    from dptb_agent.env import set_envs, create_workpath
+    from dptb_agent_tools.env import set_envs, create_workpath
     set_envs(
         transport_input=args.transport,
         model_input=args.model,
@@ -95,7 +96,7 @@ def main():
         host_input=args.host)
     create_workpath()
 
-    from dptb_agent.init_mcp import mcp
+    from dptb_agent_tools.init_mcp import mcp
     load_tools()  
 
     print_address()

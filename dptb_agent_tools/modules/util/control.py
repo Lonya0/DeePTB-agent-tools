@@ -1,10 +1,10 @@
 '''
 this file places the implementation of functions and classes that
-feasilate the workflow control of the abacus agent.
+feasilate the workflow control of the deeptb agent.
 
 Usage
 -----
-from dptb_agent.util.control import FlowEnvironment
+from dptb_agent_tools.util.control import FlowEnvironment
 
 def func(a, b):
     return a + b
@@ -274,7 +274,7 @@ class FlowEnvironment:
         return self.state['results'][-1].get('return', None)
 
     def __str__(self):
-        myself = '\nABACUS Agent Flow Environment\n'
+        myself = '\nDeePTB Agent Flow Environment\n'
         myself +=  '-----------------------------\n'
         myself += f'Workflow Name: {self.name}\n'
         myself += f'Start Time: {self.state["start_time"]}\n'

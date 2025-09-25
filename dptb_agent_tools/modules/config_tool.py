@@ -2,7 +2,7 @@ import os
 import json
 from typing import Optional, Literal, Dict, Any, TypedDict
 from pathlib import Path
-from dptb_agent.init_mcp import mcp
+from dptb_agent_tools.init_mcp import mcp
 
 class ConfigResult(TypedDict):
     config_path: str
@@ -10,6 +10,8 @@ class ConfigResult(TypedDict):
 @mcp.tool()
 def generate_deeptb_config(
     material: Literal["Si"] = "Si",
+    file_path: str = "/personal",
+    file_name: str = "deeptb_config.json"
 ) -> ConfigResult:
     """
     生成用于 DeePTB 模型训练的配置文件。
@@ -24,8 +26,8 @@ def generate_deeptb_config(
     抛出:
         RuntimeError: 写入配置文件失败。
     """
-    
-    config_output_path = "deeptb_config.json"
+
+    config_output_path = os.path.join(file_path, file_name)
 
     config = {
         "common_options": {

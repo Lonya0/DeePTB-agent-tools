@@ -3,26 +3,26 @@ requires = ["setuptools>=45", "setuptools_scm>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dptb_agent"
+name = "dptb_agent_tools"
 dynamic = ["version"]
-description = "Dptb agent"
+description = "Dptb agent tools for mcp"
 requires-python = ">=3.11"
 dependencies = [
-    "science-agent-sdk",
+    "science-agent-sdk @ git+https://github.com/dptech-corp/bohr-agent-sdk.git",
     "mcp>=1.9.0"
 ]
 
 [project.scripts]
-dptb-agent = "dptb_agent.main:main"
+dtat = "dptb_agent_tools.main:main"
 
 [tool.setuptools]
-package-dir = { "dptb_agent" = "dptb_agent" }
+package-dir = { "dptb_agent_tools" = "dptb_agent_tools" }
 
 [tool.setuptools_scm]
 
 [tool.setuptools.packages.find]
 where = [""]
-include = ["dptb_agent*"]
+include = ["dptb_agent_tools*"]
 exclude = ["tests*", "docs*", "examples*"]
 
 [tool.pytest.ini_options]

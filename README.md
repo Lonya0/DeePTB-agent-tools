@@ -4,6 +4,8 @@ DeePTB-agent-tools is a Python package that provides the Model Context Protocol 
 
 This agent's template is borrowed from ABACUS-agent-tools: https://github.com/pxlxingliang/ABACUS-agent-tools
 
+To build a user interface, check out DeePTB agent ->
+
 ## Installation
 To use DeePTB agent tools with Google Agent Development Kit (ADK), follow the recommended installation process:
 
@@ -61,7 +63,7 @@ Note: When running `abacusagent`, it will automatically check if the file exists
 Then you can start `dptb-agent`.
 ```bash
 >>> dptb-agent
-✅ Successfully loaded: dptb_agent.modules.abacus
+✅ Successfully loaded: dptb_agent_tools.modules.abacus
 INFO:     Started server process [25487]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.

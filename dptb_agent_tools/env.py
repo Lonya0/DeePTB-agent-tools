@@ -3,7 +3,7 @@ import json
 import time
 
 ENVS = {
-    "DPTB_AGENT_WORK_PATH": "/tmp/dptb_agent",
+    "DPTB_AGENT_WORK_PATH": "/tmp/dptb_agent_tools",
     "DPTB_AGENT_SUBMIT_TYPE": "local",  # local, bohrium
 
     # connection settings
@@ -60,10 +60,10 @@ def set_envs(transport_input=None, model_input=None, port_input=None, host_input
     
     Notes:
         - The input parameters has higher priority than the default values in `ENVS`.
-        - If the `~/.dptb_agent/env.json` file does not exist, it will be created with default values.
+        - If the `~/.dptb_agent_tools/env.json` file does not exist, it will be created with default values.
     """
-    # read setting in ~/.dptb_agent/env.json
-    envjson_file = os.path.expanduser("~/.dptb_agent/env.json")
+    # read setting in ~/.dptb_agent_tools/env.json
+    envjson_file = os.path.expanduser("~/.dptb_agent_tools/env.json")
     if os.path.isfile(envjson_file):
         envjson = json.load(open(envjson_file, "r"))
     else:
@@ -88,7 +88,7 @@ def set_envs(transport_input=None, model_input=None, port_input=None, host_input
         os.environ[key] = str(value)
     
     if update_envjson:
-        # write envjson to ~/.dptb_agent/env.json
+        # write envjson to ~/.dptb_agent_tools/env.json
         os.makedirs(os.path.dirname(envjson_file), exist_ok=True)
         json.dump(
             envjson,
@@ -104,7 +104,7 @@ def create_workpath():
     Returns:
         str: The path to the working directory.
     """
-    work_path = os.environ.get("DPTB_AGENT_WORK_PATH", "/tmp/dptb_agent") + f"/{time.strftime('%Y%m%d%H%M%S')}"
+    work_path = os.environ.get("DPTB_AGENT_WORK_PATH", "/tmp/dptb_agent_tools") + f"/{time.strftime('%Y%m%d%H%M%S')}"
     os.makedirs(work_path, exist_ok=True)
     cwd = os.getcwd()
     os.chdir(work_path)
