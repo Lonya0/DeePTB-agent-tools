@@ -18,7 +18,9 @@ def generate_deeptb_config(
 
     参数:
         config_output_path: 输出的配置 JSON 文件路径。
-        material: 材料类型，目前仅支持 "Si"。
+        material: 材料类型, 目前仅支持 "Si"。
+        file_path: 配置文件保存的目录路径。在Bohrium模式下, 该路径应为Bohrium节点上的路径。
+        file_name: 配置文件的名称。
 
     返回:
         包含配置文件路径的字典。
