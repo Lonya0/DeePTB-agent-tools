@@ -4,95 +4,39 @@ DeePTB-agent-tools is a Python package that provides the Model Context Protocol 
 
 This agent's template is borrowed from ABACUS-agent-tools: https://github.com/pxlxingliang/ABACUS-agent-tools
 
-To build a user interface, check out DeePTB agent ->
+To build a user interface, check out BetterAIM -> https://github.com/Lonya0/BetterAIM
 
 ## Installation
 To use DeePTB agent tools with Google Agent Development Kit (ADK), follow the recommended installation process:
 
 1. Create and activate a conda enviroment:
 ```bash
-conda create -n deeptb-agent python=3.11
-conda activate deeptb-agent
+conda create -n dtat python=3.11
+conda activate dtat
 ```
-2. Install necessary dependencies:
-```bash
-pip install mcp google-adk litellm science-agent-sdk
-```
+2. Install DeePTB:
+follow DeePTB install instruction to install one.
 
-
-3. Install ABACUS-agent-tools:
+3. Install DeePTB-agent-tools:
 ```bash
 cd ..
-git clone -b develop https://github.com/pxlxingliang/ABACUS-agent-tools.git
-cd abacus-agent
+git clone https://github.com/Lonya0/DeePTB-agent-tools.git
+cd DeePTB-agent-tools
 pip install .
 ```
-If you haven't installed ABACUS, you can install ABACUS to the same environment by conda:
+
+## Using DeePTB-agent-tools with BetterAIM
+
+### Starting DeePTB-agent-tools
+
 ```bash
-conda install abacus "libblas=*=*mkl" mpich -c conda-forge
-```
-
-## Using ABACUS agent tools with Google ADK
-
-### Use ABACUS agent tools and Google ADK on local machine
-
-#### Starting ABACUS agent tools
-Before launching `abacusagent`, you must provide the necessary configurations in the `~/.abacusagent/env.json` file. This file defines how the ABACUS agent tools generate input files and manage ABACUS calculation workflows.
-Note: When running `abacusagent`, it will automatically check if the file exists. If not, `abacusagent` will create it and set some default values. It is recommended to run `abacusagent` once first before modifying this file.
-```
-{
-    "_comments": {
-        "ABACUS_WORK_PATH": "The working directory for AbacusAgent, where all temporary files will be stored.",
-        "ABACUS_SUBMIT_TYPE": "The type of submission for ABACUS, can be local or bohrium.",
-        "ABACUSAGENT_HOST": "The host address for the AbacusAgent server.",
-        "ABACUSAGENT_PORT": "The port number for the AbacusAgent server.",
-        "ABACUSAGENT_MODEL": "The model to use for AbacusAgent, can be 'fastmcp', 'test', or 'dp'.",
-        "BOHRIUM_USERNAME": "The username for Bohrium.",
-        "BOHRIUM_PASSWORD": "The password for Bohrium.",
-        "BOHRIUM_PROJECT_ID": "The project ID for Bohrium.",
-        "BOHRIUM_ABACUS_IMAGE": "The image for Abacus on Bohrium.",
-        "BOHRIUM_ABACUS_MACHINE": "The machine type for Abacus on Bohrium.",
-        "BOHRIUM_ABACUS_COMMAND": "The command to run Abacus on Bohrium",
-        "ABACUS_COMMAND": "The command to execute Abacus on local machine.",
-        "ABACUS_PP_PATH": "The path to the pseudopotential library for Abacus.",
-        "ABACUS_ORB_PATH": "The path to the orbital library for Abacus.",
-        "_comments": "This dictionary contains the default environment variables for AbacusAgent."
-    }
-}
-```
-Then you can start `dptb-agent`.
-```bash
->>> dptb-agent
-✅ Successfully loaded: dptb_agent_tools.modules.abacus
+>>> dtat --host 0.0.0.0 --port 50001
+✅ Successfully loaded: dptb_agent_tools.modules
 INFO:     Started server process [25487]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     Uvicorn running on http://localhost:50001 (Press CTRL+C to quit)
+INFO:     Uvicorn running on http://0.0.0.0:50001 (Press CTRL+C to quit)
 ```
-#### Accessing the agent
-1. Open your browser and navigate to the provided ADK address.
-2. Select the agent directory name you configured.
-3. Interact with the LLM, which can now leverage ABACUS agent tools for computational tasks.
-
-### Use ABACUS agent tools and Google ADK on remote server
-
-After installing ABACUS agent tools and Google ADK on a remote server, use the exposed ports for configuration.
-
-#### Example for Bohrium Nodes
-```bash
-# Start DeePTB agent tools with public host and port
-dptb-agent --host "0.0.0.0" --port 50001
-# Start Google ADK with public host and port
-adk web --host "0.0.0.0" --port 50002
-```
-#### Accessing Remotely
-Visit http://your-node-address.dp.tech:50002 in your browser, where:
-
-- `your-node-address.dp.tech` is the remote node URL
-- `50002` is the configured port for Google ADK
-
-## Supported functions
-Functions of ABACUS Agent tools are in active development. Currently, the following functions are exposed as 
-MCP tools and can be 
-- Prepare ABACUS input files (INPUT, STRU, KPT, pseudopotential and orbital files)
-
+### Start BetterAIM
+visit https://github.com/Lonya0/BetterAIM to get help
+above shown url is used in BetterAIM
